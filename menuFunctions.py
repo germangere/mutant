@@ -13,12 +13,23 @@ def ejecutarEjemplo():
     dnaMutante = ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
     dnaHumano = ["ATGCGA","CAGTGC","TTCTGT","AGGATG","CGCCTA","TCAATG"]
     dnaInvalido = ["ATGCGa","CAGTGC","TTCTGT","AGGATG","CGCCTA","TCAATG"]
-    print(f'El ADN de ejemplo mutante es {dnaMutante}')
-    print(f'La función arroja: {isMutant(dnaMutante)}\n')
-    print(f'El ADN de ejemplo humano es {dnaHumano}')
-    print(f'La función arroja: {isMutant(dnaHumano)}\n')
-    print(f'Un ADN de ejemplo inválido es {dnaInvalido}')
-    print(f'La función arroja:')
+    ejemploMutant = isMutant(dnaMutante)
+    ejemploHuman = isMutant(dnaHumano)
+    print('El ADN de ejemplo mutante es:\n')
+    mostrarMatriz(dnaMutante)
+    print(f'\nLa función arroja: {ejemploMutant}')
+    print('\nPor lo tanto:')
+    mostrarResultado(ejemploMutant)
+    print('\n-----------------------------')
+    print('El ADN de ejemplo humano es:\n')
+    mostrarMatriz(dnaHumano)
+    print(f'\nLa función arroja: {ejemploHuman}')
+    print('\nPor lo tanto:')
+    mostrarResultado(ejemploHuman)
+    print('\n-----------------------------')
+    print('El ADN de ejemplo inválido es:\n')
+    mostrarMatriz(dnaInvalido)
+    print('\nLa función arroja:')
     print(isMutant(dnaInvalido))
 
 def ingresarADN():
@@ -33,6 +44,22 @@ def ingresarADN():
             validString = isValidString(cadena)
             if not validString: print('\nCometiste un error de tipeo')
         dna.append(cadena)
-    print(f'\nPerfecto! El ADN ingresado es {dna}\n')
-    print(f'La funcion arroja: {isMutant(dna)}\n')
+    print('\nPerfecto! El ADN ingresado es')
+    mostrarMatriz(dna)
+    dnaUsuario = isMutant(dna)
+    print('\nLa funcion arroja:')
+    print(dnaUsuario)
+    print('Por lo tanto:')
+    mostrarResultado(dnaUsuario)
 
+def mostrarMatriz(lista):
+    for string in lista:
+        for char in string:
+            print(char, end=' ')
+        print()
+
+def mostrarResultado(result):
+    if result:
+        print('--- ES MUTANTE ---')
+    else:
+        print('--- ES HUMANO ---')
